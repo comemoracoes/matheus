@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmação de Presença | TropiCal</title>
+
+  <link rel="icon" type="image/png" href="image/4.png">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Estilos do popup -->
+  <style>
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .popup-content {
+      background: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 420px;
+      margin: 0 1rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,.2);
+      animation: fadeInUp .35s ease;
+    }
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0 }
+      to   { transform: translateY(0);  opacity: 1 }
+    }
+    .visually-hidden {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body class="confirm-page">
+
+  <main class="confirm-container">
+    <section class="confirm-card">
+      <h1 class="confirm-title">Confirme sua presença</h1>
+
+      <form id="formConfirmacao" novalidate>
+        <label for="buscaNome" class="form-label">Digite seu nome</label>
+
+        <div class="busca-row">
+          <input id="buscaNome" class="busca-input" type="text"
+                 placeholder="Ex.: Matheus" autocomplete="off" />
+          <button id="btnBuscar" type="button" class="btn btn-primary">
+            Buscar
+          </button>
+        </div>
+
+        <ul id="resultadoBusca" class="resultado-lista"></ul>
+
+        <div id="grupoArea" class="grupo-area" hidden>
+          <p class="grupo-hint">Marque quem do seu grupo irá comparecer:</p>
+          <div id="grupoLista" class="grupo-lista"></div>
+        </div>
+
+        <button id="btnEnviar" type="submit"
+                class="btn btn-primary" disabled>
+          Enviar confirmação
+        </button>
+
+        <p id="statusMsg" class="status-msg"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Popup -->
+  <div id="popupSucesso" class="popup-overlay" hidden>
+    <div class="popup-content">
+      <h2>🎉 Presença confirmada com sucesso!</h2>
+      <p>Obrigado por confirmar.Te espero na minha festa!</p>
+      <button id="btnOkPopup" class="btn btn-primary">OK</button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+
+</body>
+</html>
+
+
+
